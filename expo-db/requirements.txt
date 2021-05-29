@@ -6,3 +6,4 @@ django-rest_framework
 django-bootstrap3
 django_filter
 django-crispy_forms
+tmdbv3api

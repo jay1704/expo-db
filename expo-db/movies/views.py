@@ -139,32 +139,6 @@ def series(request):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def login_view(request):
     login_form = LoginForm(request.POST or None)
     context = {}
@@ -179,7 +153,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
 
-                return redirect('home')
+                return redirect('movies:home')
             
     context['form'] = login_form
     
@@ -197,7 +171,7 @@ def signup_view(request):
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password, email=email)
-            return redirect('login')
+            return redirect('movies:login')
     else:
         form = UserCreationForm()
     return render(request, 'sign-up.html', {'form': form})
@@ -206,6 +180,6 @@ def signup_view(request):
 def logout_view(request):
     if request.user.is_authenticated:
         logout(request)
-    return redirect('signup')
+    return redirect('movies:signup')
         
   
